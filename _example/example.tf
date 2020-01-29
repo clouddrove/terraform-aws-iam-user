@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "iam-user" {
-  source = "git::https://github.com/clouddrove/terraform-aws-iam-user.git?ref=tags/0.12.0"
+  source = "../"
 
   name        = "iam-user"
   application = "clouddrove"
