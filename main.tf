@@ -33,9 +33,17 @@ resource "aws_iam_access_key" "default" {
 }
 
 resource "aws_iam_user_policy" "default" {
-  count = var.enabled && var.policy_enabled ? 1 : 0
+  count = var.enabled && var.policy_enabled && var.policy_arn == "" ? 1 : 0
   name  = format("%s-policy", module.labels.id)
   user  = aws_iam_user.default.*.name[0]
 
   policy = var.policy
+}
+
+resource "aws_iam_policy_attachment" "default" {
+  count = var.enabled && var.policy_enabled && var.policy_arn != "" ? 1 : 0
+  name  = format("%s-policy", module.labels.id)
+  users  = [aws_iam_user.default.*.name[0]]
+
+  policy_arn = var.policy_arn
 }
