@@ -11,6 +11,7 @@ module "labels" {
   name        = var.name
   application = var.application
   environment = var.environment
+  managedby   = var.managedby
   label_order = var.label_order
 }
 
@@ -43,7 +44,7 @@ resource "aws_iam_user_policy" "default" {
 resource "aws_iam_policy_attachment" "default" {
   count = var.enabled && var.policy_enabled && var.policy_arn != "" ? 1 : 0
   name  = format("%s-policy", module.labels.id)
-  users  = [aws_iam_user.default.*.name[0]]
+  users = [aws_iam_user.default.*.name[0]]
 
   policy_arn = var.policy_arn
 }
