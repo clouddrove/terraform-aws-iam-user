@@ -3,6 +3,11 @@ output "arn" {
   description = "The ARN assigned by AWS for this user."
 }
 
+output "unique_id" {
+  value       = module.iam-user.*.unique_id
+  description = "The unique ID assigned by AWS for this user."
+}
+
 output "key_id" {
   value       = module.iam-user.*.key_id
   description = "The ARN assigned by AWS for this user."
