@@ -41,11 +41,11 @@ jobs:
           uses: clouddrove/github-actions@v2.0
           with:
             actions_subcommand: 'terratest'
-            tf_actions_working_dir: ./_test/
+            tf_actions_working_dir: ./_test
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 'Slack Notification'
+            - name: 'Slack Notification'
           uses: clouddrove/action-slack@v2
           with:
             status: ${{ job.status }}
