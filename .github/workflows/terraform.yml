@@ -42,16 +42,16 @@ jobs:
         with:
             actions_subcommand: 'terratest'
             tf_actions_working_dir: ./_test
-          env:
+        env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: 'Slack Notification'
-          uses: clouddrove/action-slack@v2
-          with:
+      - name: 'Slack Notification'
+        uses: clouddrove/action-slack@v2
+        with:
             status: ${{ job.status }}
             fields: repo,author
             author_name: 'Clouddrove'
-          env:
+         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
           if: always()
