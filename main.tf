@@ -6,7 +6,7 @@
 #              for resources. You can use terraform-labels to implement a strict naming
 #              convention.
 module "labels" {
-  source = "git::https://github.com/clouddrove/terraform-labels.git?ref=tags/0.12.0"
+  source = "git::https://github.com/clouddrove/terraform-labels.git?ref=tags/0.13.0"
 
   name        = var.name
   application = var.application
@@ -43,7 +43,7 @@ resource "aws_iam_user_policy" "default" {
 
 resource "aws_iam_user_policy_attachment" "default" {
   count = var.enabled && var.policy_enabled && var.policy_arn != "" ? 1 : 0
-  user = aws_iam_user.default.*.name[0]
+  user  = aws_iam_user.default.*.name[0]
 
   policy_arn = var.policy_arn
 }
