@@ -5,12 +5,18 @@ variable "name" {
   default     = ""
   description = "Name  (e.g. `app` or `cluster`)."
 }
-
-variable "application" {
+variable "repository" {
   type        = string
   default     = ""
-  description = "Application (e.g. `cd` or `clouddrove`)."
+  description = "Terraform current module repo"
+
+  validation {
+    # regex(...) fails if it cannot find a match
+    condition     = can(regex("^https://", var.repository))
+    error_message = "The module-repo value must be a valid Git repo link."
+  }
 }
+
 
 variable "environment" {
   type        = string
@@ -19,13 +25,13 @@ variable "environment" {
 }
 
 variable "label_order" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Label order, e.g. `name`,`application`."
 }
 
 variable "attributes" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Additional attributes (e.g. `1`)."
 }
@@ -37,15 +43,15 @@ variable "delimiter" {
 }
 
 variable "tags" {
-  type        = map
+  type        = map(any)
   default     = {}
   description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
 }
 
 variable "managedby" {
   type        = string
-  default     = "anmol@clouddrove.com"
-  description = "ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'."
+  default     = "hello@clouddrove.com"
+  description = "ManagedBy, eg 'CloudDrove'"
 }
 
 # Module      : Iam Role
@@ -72,12 +78,14 @@ variable "permissions_boundary" {
   type        = string
   default     = ""
   description = "The ARN of the policy that is used to set the permissions boundary for the role."
+  sensitive   = true
 }
 
 variable "pgp_key" {
   type        = string
   default     = ""
   description = "Either a base-64 encoded PGP public key, or a keybase username in the form keybase:some_person_that_exists."
+  sensitive   = true
 }
 
 variable "status" {
@@ -101,4 +109,5 @@ variable "policy_arn" {
   type        = string
   default     = ""
   description = "The ARN of the policy you want to apply."
+  sensitive   = true
 }

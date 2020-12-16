@@ -16,7 +16,7 @@ github_repo: clouddrove/terraform-aws-iam-user
 # Badges to display
 badges:
   - name: "Terraform"
-    image: "https://img.shields.io/badge/Terraform-v0.12-green"
+    image: "https://img.shields.io/badge/Terraform-v0.14-green"
     url: "https://www.terraform.io"
   - name: "Licence"
     image: "https://img.shields.io/badge/License-MIT-blue.svg"
@@ -38,9 +38,9 @@ usage : |-
   ```hcl
     module "iam-user" {
       source             = "clouddrove/iam-user/aws"
-      version            = "0.13.0"
+      version            = "0.14.0"
       name               = "iam-user"
-      application        = "clouddrove"
+      repository         = "https://registry.terraform.io/modules/clouddrove/iam-user/aws/0.14.0"
       environment        = "test"
       label_order        = ["environment", "name", "application"]
       policy_enabled     = true

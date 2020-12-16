@@ -6,9 +6,9 @@ module "iam-user" {
   source = "../"
 
   name        = "iam-user"
-  application = "clouddrove"
+  repository  = "https://registry.terraform.io/modules/clouddrove/iam-user/aws/0.14.0"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["name", "environment"]
 
   policy_enabled = true
   policy         = data.aws_iam_policy_document.default.json
