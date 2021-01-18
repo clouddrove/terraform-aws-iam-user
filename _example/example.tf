@@ -6,7 +6,6 @@ module "iam-user" {
   source = "../"
 
   name        = "iam-user"
-  repository  = "https://registry.terraform.io/modules/clouddrove/iam-user/aws/0.14.0"
   environment = "test"
   label_order = ["name", "environment"]
 
