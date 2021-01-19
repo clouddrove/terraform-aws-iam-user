@@ -6,9 +6,8 @@ module "iam-user" {
   source = "../"
 
   name        = "iam-user"
-  application = "clouddrove"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["name", "environment"]
 
   policy_enabled = true
   policy         = data.aws_iam_policy_document.default.json
