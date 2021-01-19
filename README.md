@@ -14,7 +14,7 @@
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.13-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/Terraform-v0.14-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -73,11 +73,10 @@ Here is an example of how you can use this module in your inventory structure:
 ```hcl
   module "iam-user" {
     source             = "clouddrove/iam-user/aws"
-    version            = "0.13.0"
+    version            = "0.14.0"
     name               = "iam-user"
-    application        = "clouddrove"
     environment        = "test"
-    label_order        = ["environment", "name", "application"]
+    label_order        = ["name","environment"]
     policy_enabled     = true
     policy             = data.aws_iam_policy_document.default.json
   }
@@ -102,14 +101,13 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
-| attributes | Additional attributes (e.g. `1`). | `list` | `[]` | no |
+| attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
 | enabled | Whether to create Iam user. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | force\_destroy | When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices. Without force\_destroy a user with non-Terraform-managed access keys and login profile will fail to be destroyed. | `bool` | `false` | no |
-| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
-| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
+| managedby | ManagedBy, eg 'CloudDrove' | `string` | `"hello@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | path | The path to the role. | `string` | `"/"` | no |
 | permissions\_boundary | The ARN of the policy that is used to set the permissions boundary for the role. | `string` | `""` | no |
@@ -117,8 +115,9 @@ Here is an example of how you can use this module in your inventory structure:
 | policy | The policy document. | `any` | `null` | no |
 | policy\_arn | The ARN of the policy you want to apply. | `string` | `""` | no |
 | policy\_enabled | Whether to Attach Iam policy with user. | `bool` | `false` | no |
+| repository | Terraform current module repo | `string` | `"https://registry.terraform.io/modules/clouddrove/iam-user/aws"` | no |
 | status | The access key status to apply. Defaults to Active. Valid values are Active and Inactive. | `string` | `"Active"` | no |
-| tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map` | `{}` | no |
+| tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(any)` | `{}` | no |
 
 ## Outputs
 
