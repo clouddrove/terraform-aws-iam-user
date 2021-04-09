@@ -11,6 +11,7 @@ module "iam-user" {
 
   policy_enabled = true
   policy         = data.aws_iam_policy_document.default.json
+  pgp_key        = ""
 }
 
 data "aws_iam_policy_document" "default" {

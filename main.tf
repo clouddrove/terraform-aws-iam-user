@@ -6,6 +6,8 @@
 #Description : This terraform module is designed to generate consistent label names and tags
 #              for resources. You can use terraform-labels to implement a strict naming
 #              convention.
+
+
 module "labels" {
   source = "git::https://github.com/clouddrove/terraform-labels.git?ref=tags/0.14.0"
 
@@ -22,7 +24,7 @@ module "labels" {
 resource "aws_iam_user" "default" {
   count = var.enabled ? 1 : 0
 
-  name                 = module.labels.id
+  name                 = "test"
   force_destroy        = var.force_destroy
   path                 = var.path
   permissions_boundary = var.permissions_boundary
