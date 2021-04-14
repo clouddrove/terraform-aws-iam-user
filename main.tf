@@ -24,7 +24,7 @@ module "labels" {
 resource "aws_iam_user" "default" {
   count = var.enabled ? 1 : 0
 
-  name                 = "test"
+  name                 = module.labels.id
   force_destroy        = var.force_destroy
   path                 = var.path
   permissions_boundary = var.permissions_boundary
