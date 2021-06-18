@@ -73,8 +73,8 @@ jobs:
     name: 'Pre-Commit'
     needs:
       - fmt
-      - validate
       - plan
+      - validate
 
     runs-on: ubuntu-latest
     steps:
