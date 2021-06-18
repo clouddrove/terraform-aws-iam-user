@@ -73,8 +73,9 @@ jobs:
     name: 'Pre-Commit'
     needs:
       - fmt
-      - plan
       - validate
+      - plan
+
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
