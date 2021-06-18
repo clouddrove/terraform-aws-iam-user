@@ -18,6 +18,7 @@ output "key_id" {
 output "secret" {
   value       = var.pgp_key == "" ? join("", aws_iam_access_key.default.*.secret) : join("", aws_iam_access_key.default.*.encrypted_secret)
   description = "The secret access key. Note that this will be written to the state file. Please supply a pgp_key instead, which will prevent the secret from being stored in plain text."
+  sensitive   = true
 }
 
 output "tags" {

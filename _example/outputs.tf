@@ -16,6 +16,7 @@ output "key_id" {
 output "secret" {
   value       = module.iam-user.*.secret
   description = "The ARN assigned by AWS for this user."
+  sensitive   = true
 }
 
 output "tags" {
