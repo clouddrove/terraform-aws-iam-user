@@ -56,6 +56,12 @@ variable "enabled" {
   description = "Whether to create Iam user."
 }
 
+variable "key_enabled" {
+  type        = bool
+  default     = true
+  description = "Whether to create Iam user."
+}
+
 variable "force_destroy" {
   type        = bool
   default     = false
