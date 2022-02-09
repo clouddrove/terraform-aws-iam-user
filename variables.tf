@@ -11,8 +11,13 @@ variable "repository" {
   description = "Terraform current module repo"
 }
 
-
 variable "environment" {
+  type        = string
+  default     = ""
+  description = "Environment (e.g. `prod`, `dev`, `staging`)."
+}
+
+variable "application" {
   type        = string
   default     = ""
   description = "Environment (e.g. `prod`, `dev`, `staging`)."
