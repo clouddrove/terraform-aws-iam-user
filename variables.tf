@@ -72,14 +72,12 @@ variable "permissions_boundary" {
   type        = string
   default     = ""
   description = "The ARN of the policy that is used to set the permissions boundary for the role."
-  sensitive   = true
 }
 
 variable "pgp_key" {
   type        = string
   default     = ""
   description = "Either a base-64 encoded PGP public key, or a keybase username in the form keybase:some_person_that_exists."
-  sensitive   = true
 }
 
 variable "status" {
@@ -103,5 +101,4 @@ variable "policy_arn" {
   type        = string
   default     = ""
   description = "The ARN of the policy you want to apply."
-  sensitive   = true
 }
