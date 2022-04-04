@@ -54,3 +54,26 @@ resource "aws_iam_user_policy_attachment" "default" {
   user       = aws_iam_user.default.*.name[0]
   policy_arn = var.policy_arn
 }
+
+resource "aws_iam_user_group_membership" "default" {
+  count      = var.enabled ? 1 : 0
+  user       = aws_iam_user.default[count.index].name
+  groups     = var.groups
+  depends_on = [aws_iam_user.default]
+}
+
+resource "aws_iam_user_login_profile" "default" {
+  count = var.create_user && var.create_iam_user_login_profile ? 1 : 0
+
+  user                    = aws_iam_user.default[0].name
+  password_length         = var.password_length
+  password_reset_required = var.password_reset_required
+}
+
+resource "aws_iam_user_ssh_key" "default" {
+  count = var.create_user && var.upload_iam_user_ssh_key ? 1 : 0
+
+  username   = aws_iam_user.default[0].name
+  encoding   = var.ssh_key_encoding
+  public_key = var.ssh_public_key
+}
