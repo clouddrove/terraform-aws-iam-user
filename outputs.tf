@@ -26,8 +26,4 @@ output "tags" {
   description = "A mapping of tags to assign to the resource."
 }
 
-output "groups" {
-   value       = var.groups
-  description = "List of IAM groups the users were added to."
-}
 
