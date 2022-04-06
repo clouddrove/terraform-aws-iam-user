@@ -105,3 +105,51 @@ variable "policy_arn" {
   description = "The ARN of the policy you want to apply."
   sensitive   = true
 }
+
+variable "groups" {
+  type        = list(string)
+  default     = []
+  description = "(Optional) List of IAM groups to add the User to."
+}
+
+variable "create_user" {
+  type        = bool
+  default     = true
+  description = "Whether to create the IAM user"
+}
+
+variable "create_iam_user_login_profile" {
+  type        = bool
+  default     = true
+  description = "Whether to create IAM user login profile"
+}
+
+variable "password_reset_required" {
+  type        = bool
+  default     = true
+  description = "Whether the user should be forced to reset the generated password on first login."
+}
+
+variable "password_length" {
+  type        = number
+  default     = 20
+  description = "The length of the generated password"
+}
+
+variable "upload_iam_user_ssh_key" {
+  type        = bool
+  default     = false
+  description = "Whether to upload a public ssh key to the IAM user"
+}
+variable "ssh_key_encoding" {
+  type        = string
+  default     = "SSH"
+  description = "Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use SSH. To retrieve the public key in PEM format, use PEM"
+}
+
+variable "ssh_public_key" {
+  type        = string
+  default     = ""
+  description = "The SSH public key. The public key must be encoded in ssh-rsa format or PEM format"
+}
+

@@ -84,7 +84,6 @@ jobs:
       - name: 'Install Tflint'
         run: |
           curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
-
       - name: 'Pre-Commit 🔎'
         uses: pre-commit/action@v2.0.3
         continue-on-error: true
