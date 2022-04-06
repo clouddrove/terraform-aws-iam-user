@@ -14,10 +14,16 @@
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.15-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/Terraform-v1.1.7-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
-  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
+  <img src="https://img.shields.io/badge/License-APACHE-blue.svg" alt="Licence">
+</a>
+<a href="https://github.com/clouddrove/terraform-aws-iam-user/actions/workflows/tfsec.yml">
+  <img src="https://github.com/clouddrove/terraform-aws-iam-user/actions/workflows/tfsec.yml/badge.svg" alt="tfsec">
+</a>
+<a href="https://github.com/clouddrove/terraform-aws-iam-user/actions/workflows/terraform.yml">
+  <img src="https://github.com/clouddrove/terraform-aws-iam-user/actions/workflows/terraform.yml/badge.svg" alt="static-checks">
 </a>
 
 
@@ -51,7 +57,7 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 
 This module has a few dependencies: 
 
-- [Terraform 0.13](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Terraform 1.x.x](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [Go](https://golang.org/doc/install)
 - [github.com/stretchr/testify/assert](https://github.com/stretchr/testify)
 - [github.com/gruntwork-io/terratest/modules/terraform](https://github.com/gruntwork-io/terratest)
@@ -72,13 +78,15 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
   module "iam-user" {
-    source             = "clouddrove/iam-user/aws"
-    version            = "0.15.0"
-    name               = "iam-user"
-    environment        = "test"
-    label_order        = ["name","environment"]
-    policy_enabled     = true
-    policy             = data.aws_iam_policy_document.default.json
+    source                  = "clouddrove/iam-user/aws"
+    version                 = "0.15.0"
+    name                    = "iam-user"
+    environment             = "test"
+    label_order             = ["name","environment"]
+    policy_enabled          = true
+    policy                  = data.aws_iam_policy_document.default.json
+    password_length         = 20
+    password_reset_required = true
   }
 
   data "aws_iam_policy_document" "default" {
@@ -102,13 +110,18 @@ Here is an example of how you can use this module in your inventory structure:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
+| create\_iam\_user\_login\_profile | Whether to create IAM user login profile | `bool` | `true` | no |
+| create\_user | Whether to create the IAM user | `bool` | `true` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
 | enabled | Whether to create Iam user. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | force\_destroy | When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices. Without force\_destroy a user with non-Terraform-managed access keys and login profile will fail to be destroyed. | `bool` | `false` | no |
+| groups | (Optional) List of IAM groups to add the User to. | `list(string)` | `[]` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | managedby | ManagedBy, eg 'CloudDrove' | `string` | `"hello@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| password\_length | The length of the generated password | `number` | `20` | no |
+| password\_reset\_required | Whether the user should be forced to reset the generated password on first login. | `bool` | `true` | no |
 | path | The path to the role. | `string` | `"/"` | no |
 | permissions\_boundary | The ARN of the policy that is used to set the permissions boundary for the role. | `string` | `""` | no |
 | pgp\_key | Either a base-64 encoded PGP public key, or a keybase username in the form keybase:some\_person\_that\_exists. | `string` | `""` | no |
@@ -116,8 +129,11 @@ Here is an example of how you can use this module in your inventory structure:
 | policy\_arn | The ARN of the policy you want to apply. | `string` | `""` | no |
 | policy\_enabled | Whether to Attach Iam policy with user. | `bool` | `false` | no |
 | repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-aws-iam-user"` | no |
+| ssh\_key\_encoding | Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use SSH. To retrieve the public key in PEM format, use PEM | `string` | `"SSH"` | no |
+| ssh\_public\_key | The SSH public key. The public key must be encoded in ssh-rsa format or PEM format | `string` | `""` | no |
 | status | The access key status to apply. Defaults to Active. Valid values are Active and Inactive. | `string` | `"Active"` | no |
 | tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(any)` | `{}` | no |
+| upload\_iam\_user\_ssh\_key | Whether to upload a public ssh key to the IAM user | `bool` | `false` | no |
 
 ## Outputs
 
