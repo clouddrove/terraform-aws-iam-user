@@ -108,48 +108,48 @@ variable "policy_arn" {
 
 variable "groups" {
   type        = list(string)
-  description = "(Optional) List of IAM groups to add the User to."
   default     = []
+  description = "(Optional) List of IAM groups to add the User to."
 }
 
 variable "create_user" {
-  description = "Whether to create the IAM user"
   type        = bool
   default     = true
+  description = "Whether to create the IAM user"
 }
 
 variable "create_iam_user_login_profile" {
-  description = "Whether to create IAM user login profile"
   type        = bool
   default     = true
+  description = "Whether to create IAM user login profile"
 }
 
 variable "password_reset_required" {
-  description = "Whether the user should be forced to reset the generated password on first login."
   type        = bool
   default     = true
+  description = "Whether the user should be forced to reset the generated password on first login."
 }
 
 variable "password_length" {
-  description = "The length of the generated password"
   type        = number
   default     = 20
+  description = "The length of the generated password"
 }
 
 variable "upload_iam_user_ssh_key" {
-  description = "Whether to upload a public ssh key to the IAM user"
   type        = bool
   default     = false
+  description = "Whether to upload a public ssh key to the IAM user"
 }
 variable "ssh_key_encoding" {
-  description = "Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use SSH. To retrieve the public key in PEM format, use PEM"
   type        = string
   default     = "SSH"
+  description = "Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use SSH. To retrieve the public key in PEM format, use PEM"
 }
 
 variable "ssh_public_key" {
-  description = "The SSH public key. The public key must be encoded in ssh-rsa format or PEM format"
   type        = string
   default     = ""
+  description = "The SSH public key. The public key must be encoded in ssh-rsa format or PEM format"
 }
 
