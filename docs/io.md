@@ -37,4 +37,3 @@
 | secret | The secret access key. Note that this will be written to the state file. Please supply a pgp\_key instead, which will prevent the secret from being stored in plain text. |
 | tags | A mapping of tags to assign to the resource. |
 | unique\_id | The unique ID assigned by AWS for this user. |
-

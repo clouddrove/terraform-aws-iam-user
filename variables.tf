@@ -152,4 +152,3 @@ variable "ssh_public_key" {
   default     = ""
   description = "The SSH public key. The public key must be encoded in ssh-rsa format or PEM format"
 }
-
