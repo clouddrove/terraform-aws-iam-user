@@ -33,7 +33,7 @@ resource "aws_iam_user" "default" {
 }
 
 resource "aws_iam_access_key" "default" {
-  count   = var.enabled ? 1 : 0
+  count   = var.enabled && var.create_access_key ? 1 : 0
   user    = aws_iam_user.default.*.name[0]
   pgp_key = var.pgp_key
   status  = var.status
