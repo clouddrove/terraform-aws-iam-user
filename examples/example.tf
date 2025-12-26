@@ -14,6 +14,7 @@ module "iam-user" {
   pgp_key                 = ""
   password_length         = 20
   password_reset_required = true
+  create_access_key       = true
 }
 
 data "aws_iam_policy_document" "default" {

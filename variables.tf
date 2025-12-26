@@ -153,3 +153,9 @@ variable "ssh_public_key" {
   description = "The SSH public key. The public key must be encoded in ssh-rsa format or PEM format"
 }
 
+variable "create_access_key" {
+  type        = bool
+  default     = true
+  description = "Whether to create an access key for iam role"
+
+}
