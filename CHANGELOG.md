@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-01-09
+### :sparkles: New Features
+- [`ec1dd95`](https://github.com/clouddrove/terraform-aws-iam-user/commit/ec1dd950d0a2c1f657b912450961dd578d491ae7) - updated changelog.yml name and file *(commit by [@vibutigoyal](https://github.com/vibutigoyal))*
+- [`4f6b88b`](https://github.com/clouddrove/terraform-aws-iam-user/commit/4f6b88bbab54a54ac8a532005d1743efe1bd0844) - add deepsource & added assignees,reviewer in dependabot" *(commit by [@Tanveer143s](https://github.com/Tanveer143s))*
+- [`0060e89`](https://github.com/clouddrove/terraform-aws-iam-user/commit/0060e89a8541ac8eb960952664a79fe5db7841db) - update github-action version and added automerge file *(PR [#17](https://github.com/clouddrove/terraform-aws-iam-user/pull/17) by [@theprashantyadav](https://github.com/theprashantyadav))*
+- [`759101a`](https://github.com/clouddrove/terraform-aws-iam-user/commit/759101a5d10ef46297723e14c6ac654bc47750b9) - updated example path and readme paramters *(commit by [@Tanveer143s](https://github.com/Tanveer143s))*
+- [`84002d5`](https://github.com/clouddrove/terraform-aws-iam-user/commit/84002d5fc208a45c9aa076735a84fa2334847454) - updated branch name in uses of workflow *(PR [#19](https://github.com/clouddrove/terraform-aws-iam-user/pull/19) by [@rakeshclouddevops](https://github.com/rakeshclouddevops))*
+- [`8df2111`](https://github.com/clouddrove/terraform-aws-iam-user/commit/8df211184078b719da56bbbacc118a5c72ec4b29) - add control variable for access key creation *(commit by [@arzian-cd](https://github.com/arzian-cd))*
+- [`80e326b`](https://github.com/clouddrove/terraform-aws-iam-user/commit/80e326bfaffc84c154c53e80cd9c9222b1976f11) - example file to use create_access_key variable *(commit by [@arzian-cd](https://github.com/arzian-cd))*
+
+
 ## [1.3.0] - 2023-01-19
 ### :bug: Bug Fixes
 - [`67f7c3c`](https://github.com/clouddrove/terraform-aws-iam-user/commit/67f7c3c577ca80576da6cb32786a28b96454d0f7) - use terraform letast version.
@@ -73,3 +84,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.12.2.1]: https://github.com/clouddrove/terraform-aws-iam-user/compare/0.15.0...0.12.2.1
 [1.0.1]: https://github.com/clouddrove/terraform-aws-iam-user/compare/0.12.2.1...1.0.1
 [1.3.0]: https://github.com/clouddrove/terraform-aws-iam-user/compare/1.0.1...1.3.0
+[1.3.1]: https://github.com/clouddrove/terraform-aws-iam-user/compare/1.3.0...1.3.1
