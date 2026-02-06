@@ -5,6 +5,13 @@ variable "name" {
   default     = ""
   description = "Name  (e.g. `app` or `cluster`)."
 }
+
+variable "extra_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
+}
+
 variable "repository" {
   type        = string
   default     = "https://github.com/clouddrove/terraform-aws-iam-user"
