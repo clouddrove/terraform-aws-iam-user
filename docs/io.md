@@ -3,6 +3,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
+| create\_access\_key | Whether to create an access key for iam role | `bool` | `true` | no |
 | create\_iam\_user\_login\_profile | Whether to create IAM user login profile | `bool` | `true` | no |
 | create\_user | Whether to create the IAM user | `bool` | `true` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
