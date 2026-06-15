@@ -12,7 +12,7 @@
 | force\_destroy | When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices. Without force\_destroy a user with non-Terraform-managed access keys and login profile will fail to be destroyed. | `bool` | `false` | no |
 | groups | (Optional) List of IAM groups to add the User to. | `list(string)` | `[]` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
-| managedby | ManagedBy, eg 'CloudDrove' | `string` | `"hello@clouddrove.com"` | no |
+| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal' | `string` | `"hello@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | password\_length | The length of the generated password | `number` | `20` | no |
 | password\_reset\_required | Whether the user should be forced to reset the generated password on first login. | `bool` | `true` | no |
